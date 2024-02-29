@@ -4,7 +4,7 @@ from os.path import relpath
 from struct import pack, unpack
 from typing import BinaryIO
 
-from piki_tools.misc import decode_c_string, open_helper, pad_len_pow2, read_exact
+from piki_tools.misc import decode_c_string, open_helper, pad_dist_pow2, read_exact
 
 def extract_paired_arc_dir(arc: BinaryIO, dir: BinaryIO, filepaths: dict[str, str] = dict(), encoding: str = "shift-jis"):
     dir_size, count = unpack(">II", read_exact(dir, 8))
@@ -29,12 +29,12 @@ def pack_paired_arc_dir(arc: BinaryIO, dir: BinaryIO, filepaths: list[str] = lis
         with open(filepath, "rb") as f:
             filepath = relpath(filepath)  # Remove bits like "./" or "//"
             filepath = filepath.encode(encoding)
-            filepath = filepath + b'\0' * pad_len_pow2(len(filepath), 4)
+            filepath = filepath + b'\0' * pad_dist_pow2(len(filepath), 4)
             data = f.read()
             dir.write(pack(">III", arc.tell(), len(data), len(filepath)))
             dir.write(filepath)
             arc.write(data)
-            arc.write(b'\xCC' * pad_len_pow2(arc.tell(), 32))  # Imitate MSVCRTD uninitialized bytes
+            arc.write(b'\xCC' * pad_dist_pow2(arc.tell(), 32))  # Imitate MSVCRTD uninitialized bytes
         count += 1
     dir_size = dir.tell()
     dir.seek(0)

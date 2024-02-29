@@ -4,7 +4,7 @@ from struct import pack, unpack
 from os.path import relpath, splitext
 from typing import BinaryIO
 
-from piki_tools.misc import decode_c_string, open_helper, pad_len_pow2, read_exact
+from piki_tools.misc import decode_c_string, open_helper, pad_dist_pow2, read_exact
 
 map_file_ext_to_magic = {
 #   ".pcr": 0,  # Are *.pcr files actually magic 0, or is that just the default?
@@ -42,7 +42,7 @@ def pack_bundle(bun: BinaryIO, filepaths: list[str] = list(), encoding: str = "s
             magic = get_magic(splitext(filepath)[1])
             filepath = relpath(filepath)  # Remove bits like "./" or "//"
             filepath = filepath.encode(encoding)
-            filepath = filepath + b'\0' * pad_len_pow2(len(filepath), 4)
+            filepath = filepath + b'\0' * pad_dist_pow2(len(filepath), 4)
             data = f.read()
             bun.write(pack(">III", magic, len(data), len(filepath)))
             bun.write(filepath)

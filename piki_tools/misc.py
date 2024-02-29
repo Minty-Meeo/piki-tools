@@ -26,7 +26,7 @@ def align_up(value: int, size: int):
     return align_down(value + size - 1, size)
 #
 
-def pad_len_pow2(value: int, size: int):
+def pad_dist_pow2(value: int, size: int):
     return ~(value - 1) & (size - 1)
 #
 
