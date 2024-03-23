@@ -7,9 +7,11 @@ Run the command `pip install "piki-tools @ git+https://github.com/Minty-Meeo/pik
 ## Entry Points
 - `piki_arcdir`: Command-line tool to pack and extract Paired ARC + DIR Files archives.
 - `piki_bun`: Command-line tool to pack and extract Bundle archives.
+- `piki_barc`: Command-line tool to pack and extract BARC archives.
 - `piki_txe`: Command-line tool to encode and decode Dolphin Texture files.
 
 ## Modules
 - `arcdir`: Library for Paired ARC + DIR Files archives.
 - `bun`: Library for Bundle archives.
+- `barc`: Library for BARC archives.
 - `txe`: Library for Dolphin Texture files.

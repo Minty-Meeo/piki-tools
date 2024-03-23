@@ -7,6 +7,7 @@ __entry_points__ = {
     "console_scripts": [
         "piki_arcdir = piki_tools.piki_arcdir:main",
         "piki_bun = piki_tools.piki_bun:main",
+        "piki_barc = piki_tools.piki_barc:main",
         "piki_txe = piki_tools.piki_txe:main",
     ],
 }
