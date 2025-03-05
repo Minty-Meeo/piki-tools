@@ -31,6 +31,7 @@ def extract_bundle(bun: BinaryIO, filepaths: dict[str, str] = dict(), encoding: 
             else:
                 continue
         with open_helper(filepath, "wb", make_dirs=True) as f:
+            print(f"extracted \"{filepath}\"")
             f.write(read_exact(bun, size))
 #
 

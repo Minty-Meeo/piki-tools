@@ -15,7 +15,7 @@ def help_pack():
 #
 
 def help():
-    print("Run this program from the directory you want the *.jam file paths to be relative to\n")
+    print("Run this program from the directory you want the *.jam file paths to be relative to.\n")
     help_extract()
     print()
     help_pack()

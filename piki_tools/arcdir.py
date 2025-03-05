@@ -17,6 +17,7 @@ def extract_paired_arc_dir(arc: BinaryIO, dir: BinaryIO, filepaths: dict[str, st
             else:
                 continue
         with open_helper(path, "wb", make_dirs=True) as f:
+            print(f"extracted \"{path}\"")
             arc.seek(offset)
             f.write(read_exact(arc, size))
     assert(dir.tell() == dir_size)  # Sanity check

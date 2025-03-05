@@ -5,7 +5,7 @@ from piki_tools.arcdir import extract_paired_arc_dir, pack_paired_arc_dir
 
 def help_extract():
     print("Usage: piki_arcdir EXTRACT <*.arc path> <*.dir path> [<file 1> <destination 1>] [<file 2> <destination 2>] ... [<file N> <destination N>]\n"
-          "You may provide optional file and destination argument pairs to extract individual files to an exact destination.")
+          "You may provide optional file and destination argument pairs to extract individual files to an exact destination. Otherwise, all files will be extracted to their relative filepaths.")
 #
 
 def help_pack():
@@ -15,7 +15,7 @@ def help_pack():
 #
 
 def help():
-    print("It is recommended to run this program from the dataDir directory of Pikmin 1\n")
+    print("All filepaths are relative to the current working directory, so it is recommended to run this program from the dataDir directory of Pikmin 1 when packing.\n")
     help_extract()
     print()
     help_pack()

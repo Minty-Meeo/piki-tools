@@ -20,6 +20,7 @@ def extract_barc(hed: BinaryIO, arc_location: str = getcwd(), encoding: str = "s
                 continue
             jam_name = decode_c_string(jam_name, encoding)
             with open_helper(jam_name, "wb", make_dirs=True) as f:
+                print(f"extracted \"{jam_name}\"")
                 arc.seek(offset)
                 f.write(read_exact(arc, size))
 #
